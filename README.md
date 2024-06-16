@@ -69,19 +69,10 @@ I made use of the following excellent libraries - and I'm grateful to the develo
 The `boot.py` section generally deals with setting the credentials for the wifi network and Solis API. It loads a captive portal with an SSID starting `SolarDisplay-` and once you've connected to it with a handy device and web browser, you can enter the appropriate information there. Once it's done, it should reset and start displaying the data.
 
 #### main.py
-This runs a bunch of uasyncio loops, mainly to make web service calls to Solis every 45 seconds. While it's doing that, a dot appears around the middle of the bottom row of the screen. If it's successful, the dot disappears. If it's unsuccessful, it turns into two dots. 
+This runs a bunch of uasyncio loops, mainly to make web service calls to Home Assistant every 45 seconds. While it's doing that, a blue dot appears at the bottom right of the screen. If it's successful, the dot disappears. If it's unsuccessful, it goes red.
 
-The button on Pin 35 - if there is information available - prints the current daily solar generation, and the time of the last update by the datalogger (it only updates every five minutes). 
-
-If there's been a problem with getting data, the last HTTP response code from solis cloud will be displayed, in order to help with diagnosis (for example, if the key/secret/id/serial combination are wrong, it'll return a 403).
-
-The button on Pin 34 increases the brightness of the LED until it gets to maxium, then goes to 0
-
-The button on Pin 36 is the hard reset button - hold it for 3 seconds and it clears the credentials and restarts at the captive portal.
-
-Finally, the reset button does a normal reset on the ESP32, in case it's got stuck or something.
-
+There are two buttons on the back of the display - one of them is a soft reset, the other, if you hold it for a few seconds it carries out a full reset, including settings. Also if the backlight is off (it's currently configured to turn it off after 11pm and back on at 6am) it turns it on for a brief time.
 
 ## 3D printed case
 
-To follow..
+STLs and a 3MF file for the case can be found in the [3D models](docs/3D%20models/) section of the `docs` folder.

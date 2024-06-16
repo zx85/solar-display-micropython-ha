@@ -67,10 +67,10 @@ I made use of the following excellent libraries - and I'm grateful to the develo
 ### How it works
 
 #### boot.py
-The `boot.py` section generally deals with setting the credentials for the wifi network and Solis API. It loads a captive portal with an SSID starting `SolarDisplay-` and once you've connected to it with a handy device and web browser, you can enter the appropriate information there. Once it's done, it should reset and start displaying the data.
+The `boot.py` section generally deals with setting the credentials for the wifi network and the URL / token for Home Assisant. It loads a captive portal with an SSID starting `SolarDisplay-` and once you've connected to it with a handy device and web browser, you can enter the appropriate information there. Once it's done, it should reset and start displaying the data.
 
 #### main.py
-This runs a bunch of uasyncio loops, mainly to make web service calls to Home Assistant every 45 seconds. While it's doing that, a blue dot appears at the bottom right of the screen. If it's successful, the dot disappears. If it's unsuccessful, it goes red.
+This runs a couple of uasyncio loops, mainly to make web service calls to Home Assistant every 45 seconds. While it's doing that, a blue dot appears at the bottom right of the screen. If it's successful, the dot disappears. If it's unsuccessful, it goes red.
 
 Getting the HA pyscript function to combine all the output into one handy JSON file reduces the number of requests made to Home Assistant, which, itself, reducest the likelihood of a failed call - there's something a bit odd about requests running in a uasync function that I think can get itself into a bit of a tangle. I'm sure there's a better way of doing it, but this seems to be fairly reliable.
 

@@ -1,4 +1,4 @@
-# Solis Cloud API display for ESP32
+# Solis Cloud API display for ESP32 'Cheap Yellow Display' and Home Assistant
 
 A version of a Solis Cloud API solar display using MicroPython and a [Cheap Yellow Display](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display)
 

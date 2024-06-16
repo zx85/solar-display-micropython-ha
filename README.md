@@ -71,6 +71,8 @@ The `boot.py` section generally deals with setting the credentials for the wifi 
 #### main.py
 This runs a bunch of uasyncio loops, mainly to make web service calls to Home Assistant every 45 seconds. While it's doing that, a blue dot appears at the bottom right of the screen. If it's successful, the dot disappears. If it's unsuccessful, it goes red.
 
+Getting the HA pyscript function to combine all the output into one handy JSON file reduces the number of requests made to Home Assistant, which, itself, reducest the likelihood of a failed call - there's something a bit odd about requests running in a uasync function that I think can get itself into a bit of a tangle. I'm sure there's a better way of doing it, but this seems to be fairly reliable.
+
 There are two buttons on the back of the display - one of them is a soft reset, the other, if you hold it for a few seconds it carries out a full reset, including settings. Also if the backlight is off (it's currently configured to turn it off after 11pm and back on at 6am) it turns it on for a brief time.
 
 ## 3D printed case

@@ -46,7 +46,7 @@ Create a text helper called `input_text.solar_display_data`:
 
 
 #### Copy the pyscript file
-The `solar_data.py` file should be copied to the `homeassistant/pyscript` directory:
+The `solar_data.py` file [here](pyscript/solar_data.py) should be copied to the `homeassistant/pyscript` directory:
 
 ![pyscript directory](docs/pyscript-setup.png)
 

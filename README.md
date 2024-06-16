@@ -4,6 +4,7 @@ A version of a Solis Cloud API solar display using MicroPython and a [Cheap Yell
 
 It uses [PyScript](https://hacs-pyscript.readthedocs.io/en/latest/) to read data from the [Solis Sensor](https://github.com/hultenvp/solis-sensor/) HACS integration on Home Assistant and store it as JSON for the display to call in one go.
 
+![solar display for HA](docs/display.jpg)
 
 ### Requirements
 As the branch suggests, this needs Home Assistant to be installed, and a long lived access token (from your user profile at the bottom of the 'Security' tab)

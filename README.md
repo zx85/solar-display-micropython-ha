@@ -9,7 +9,7 @@ It uses [PyScript](https://hacs-pyscript.readthedocs.io/en/latest/) to read data
 ### Requirements
 As the branch suggests, this needs Home Assistant to be installed, and a long lived access token (from your user profile at the bottom of the 'Security' tab)
 
-It also needs PyScript to be installed - more on tha later.
+It also needs PyScript to be installed - more on thaT later.
 
 
 ## Hardware

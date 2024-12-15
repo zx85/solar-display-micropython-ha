@@ -88,10 +88,17 @@ def validate_data(solar_usage):
                        "grid_in_today"]:
         if each_param in solar_usage:
             print(f"{each_param} is {solar_usage[each_param]}")
+        # Extra bit to sort out occasional negative export
+            if each_param=="export_today":
+                if float(solar_usage[each_param])<0:
+                    solar_usage[each_param]="0.0"   
         else:
             print(f"{each_param} is empty - skipping this run")
             success=False
-    return success
+    if success:
+        return solar_usage
+    else:
+        return False
 
 def bl_control(timestamp):
     global bl_state
@@ -107,7 +114,7 @@ def bl_control(timestamp):
 
 # Display function - does all the doings
 def display_data(solar_usage,force=False):
-    if validate_data(solar_usage):
+    if solar_usage:=validate_data(solar_usage):
         if force or (solar_usage["timestamp"] != solar_usage["prev_timestamp"]):
             gc.collect()
             print("Solis data has been updated - do the LCD thing...")

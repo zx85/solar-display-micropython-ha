@@ -63,6 +63,8 @@ I made use of the following excellent libraries - and I'm grateful to the develo
 - Wifi Captive Portal - [github.com/anson-vandoren/esp8266-captive-portal](https://github.com/anson-vandoren/esp8266-captive-portal) - ([*blog post*](https://ansonvandoren.com/posts/esp8266-captive-web-portal-part-1/))
 - Micropython library for ili9341 (including custom fonts) [github.com/rdagger/micropython-ili9341](https://github.com/rdagger/micropython-ili9341) - [*homepage*](https://www.rototron.info/)
 
+### Font software
+The bytecode for the font software was created using the excellent [GLCD Font Creator](https://www.mikroe.com/glcd-font-creator) - the trick is to cut down the font characters only to those that are required.
 
 ### How it works
 

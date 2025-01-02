@@ -259,6 +259,7 @@ def display_data(solar_usage,force=False):
             # battery - in % #
             ##################
             battery_per_val=float(solar_usage["battery_per"])
+            # note: % symbol is actually / in the font bytecode
             display.draw_text(98, 52, f"{solar_usage["battery_per"].split(".")[0]}/",font_num, color565(255, 230, 230), landscape=True)
             display.fill_rectangle(12, 25, 6, 16, color565(255, 192, 192)) # battery top
             display.fill_rectangle(18, 18, 60, 30, color565(255, 192, 192)) # battery outline
@@ -273,6 +274,7 @@ def display_data(solar_usage,force=False):
             ###################
             # timestamp hh:mm #
             ###################
+            # note: @ symbol is actually ; in the font bytecode
             display.draw_text(1, 319, f";{solar_usage["timestamp"].split("T")[1][:5]}", font_num, color565(64, 64, 64), landscape=True) # time
     
     else: # data not valid

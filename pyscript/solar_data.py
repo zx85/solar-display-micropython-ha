@@ -15,7 +15,7 @@ def get_solar_data():
     }
     for state_label, state_name in state_list.items():
         states[state_label] = state.get(state_name)
-    states["timestamp"] = state.getattr(sensor.solis_ac_output_total_power)[
+    states["timestamp"] = state.getattr(sensor.solis_total_consumption_power)[
         "Last updated"
     ]
     state.set("input_text.solar_display_data", value=states["timestamp"], info=states)

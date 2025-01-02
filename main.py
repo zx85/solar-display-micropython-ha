@@ -33,7 +33,7 @@ gc.collect()
 # load the fonts
 font = XglcdFont('fonts/FuturaNum21x39.c', 21, 39, 46)
 font_uom = XglcdFont('fonts/Calibri12x14.c', 12, 14, 87)
-font_num = XglcdFont('fonts/FuturaNum21x26.c', 21, 26, 37)
+font_num = XglcdFont('fonts/FuturaNum20x22.c', 20, 22, 47)
 font_icon = XglcdFont('fonts/Emoji24x24.c',24, 24, 49)
 
 # Local time doings
@@ -68,11 +68,13 @@ def get_ha(ha_info):
     print(f"Getting data...")
     try:
         gc.collect()
-        resp=requests.get(url=ha_url,headers=headers,timeout=5)
+        resp=requests.get(url=ha_url,headers=headers,timeout=10)
         solar_dict=resp.json()['attributes']['info']
-    except:
+        print(f"Here's what I got: {solar_dict}")
+    except Exception as e:
         print(f" ... o no!\nI couldn't get the data from {ha_url}")
-    print(f"Here's what I got: {solar_dict}")
+        print(f"Exception: {e}")
+
     return solar_dict
 
 def validate_data(solar_usage):
@@ -257,7 +259,7 @@ def display_data(solar_usage,force=False):
             # battery - in % #
             ##################
             battery_per_val=float(solar_usage["battery_per"])
-            display.draw_text(100, 61, f"{solar_usage["battery_per"].split(".")[0]}%",font_num, color565(255, 230, 230), landscape=True)
+            display.draw_text(98, 52, f"{solar_usage["battery_per"].split(".")[0]}/",font_num, color565(255, 230, 230), landscape=True)
             display.fill_rectangle(12, 25, 6, 16, color565(255, 192, 192)) # battery top
             display.fill_rectangle(18, 18, 60, 30, color565(255, 192, 192)) # battery outline
             display.fill_rectangle(21, 22, 50-int(battery_per_val/2), 22, color565(0, 0, 0)) # battery drain
@@ -267,6 +269,12 @@ def display_data(solar_usage,force=False):
                 display.fill_polygon(3,91,33,8,color565(64, 192, 64),180)
             else: # battery stays the same
                 display.fill_rectangle(86,24,6,20,color565(192, 192, 192))
+
+            ###################
+            # timestamp hh:mm #
+            ###################
+            display.draw_text(1, 319, f";{solar_usage["timestamp"].split("T")[1][:5]}", font_num, color565(64, 64, 64), landscape=True) # time
+    
     else: # data not valid
             display.fill_rectangle(238, 0, 2, 2, color565(0,192,192)) # done
 

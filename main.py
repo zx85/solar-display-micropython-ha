@@ -23,8 +23,9 @@ SOLIS_FILE = const("config/solis.env")
 clear_btn = Pin(0, Pin.IN, Pin.PULL_UP)
 bl_pin = Pin(21, Pin.OUT)
 bl_state = True
-BL_NIGHT_START = const("23")
-BL_NIGHT_END = const("5")
+# hours to turn the backlight off and on again
+BL_NIGHT_START = const(23)
+BL_NIGHT_END = const(5)
 
 # Define the display doings
 spi1 = SPI(1, baudrate=40000000, sck=Pin(14), mosi=Pin(13))
@@ -106,12 +107,12 @@ def validate_data(solar_usage):
 
 def bl_control(timestamp):
     global bl_state
-    timestamp_value=timestamp.split("T")[1][:2]
-    if timestamp_value==BL_NIGHT_END and not(bl_state):
+    timestamp_hour=timestamp.split("T")[1][:2]
+    if timestamp_hour==("%02d" % (BL_NIGHT_END)) and not(bl_state):
         print("Turning backlight on")
         bl_state=True
         bl_pin.on()
-    if timestamp_value==BL_NIGHT_START and bl_state:
+    if timestamp_hour==("%02d" % (BL_NIGHT_START)) and bl_state:
         print("Turning backlight off")
         bl_state=False
         bl_pin.off()
